@@ -1,0 +1,38 @@
+{
+    "data": [{
+            "state": "registered",
+            "step": "capture",
+            "class_and_method": "vposmm.web.InitialValidation.initEcommerceData()",
+            "line_number ": "882",
+            "value": "Consulta datos del comercio"
+        },
+        {
+            "state": "incomplete",
+            "step": "Business_rules",
+            "class_method": "vposmm.util.ResponseUtil.sendRBA()",
+            "line_number ": "381",
+            "value": "uso de RBA para confirmación"
+        },
+        {
+            "state": "invalid",
+            "step": "authorization",
+            "class_method": "vposmm.util.process.ProcessVisanetAutorize()",
+            "line_number ": "330",
+            "value": "Autorizacion con la procesadoraVisa"
+        },
+        {
+            "state": "authorized",
+            "step": "authorization",
+            "class_method": "vposmm.util.process.ProcessVisanetAutorize()",
+            "line_number ": "330",
+            "value": "Autorizacion con la procesadoraVisa"
+        },
+        {
+            "state": "denied",
+            "step": "authorization",
+            "class_method": "vposmm.util.process.ProcessVisanetAutorize()",
+            "line_number ": "330",
+            "value": "Autorizacion con la procesadoraVisa"
+        }
+    ]
+}
