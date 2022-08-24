@@ -1,6 +1,12 @@
 package com.alg.model;
 
 
+import com.alg.config.Config;
+import com.alg.data.Data;
+import com.google.gson.Gson;
+
+import java.util.ArrayList;
+
 public class Segments {
 
     private String state;
@@ -13,20 +19,33 @@ public class Segments {
     Message_ilgn message_ilgn = new Message_ilgn();
     Error errorObject;
     private String number_sequence;
-    
-    
-    public Segments(String state, String step, String class_and_method, Duration durationObject, String start,
-            String end, String line_number, Message_ilgn message_ilgn, Error errorObject, String number_sequence) {
+    static Duration duration;
+
+    static Config cfg = new Config();
+    static Data data = new Data();
+
+    public Segments(String state, String step, String class_and_method, long start,
+                    String line_number, Error errorObject, String number_sequence,
+                    String Message_ilgn_locale, String Message_ilgn_value) {
         this.state = state;
         this.step = step;
         this.class_and_method = class_and_method;
-        this.durationObject = durationObject;
-        this.start = start;
-        this.end = end;
+        this.start = start + "";
+        long endTime = System.currentTimeMillis();
+        duration = new Duration();
+        duration.setMilliseconds(endTime - start + "");
+        duration.setSeconds("1");
+        this.durationObject = duration;
+        this.end = endTime + "";
         this.line_number = line_number;
-        this.message_ilgn = message_ilgn;
         this.errorObject = errorObject;
         this.number_sequence = number_sequence;
+        this.message_ilgn = new Message_ilgn(Message_ilgn_locale, Message_ilgn_value);
+
+    }
+
+    public Segments() {
+
     }
 
     public Message_ilgn getMessage_ilgn() {
@@ -49,7 +68,17 @@ public class Segments {
     }
 
     public String getClass_and_method() {
-        return class_and_method;
+        String className = Thread.currentThread().getStackTrace()[2].getClassName();
+        String methodName = Thread.currentThread().getStackTrace()[2].getMethodName();
+        return className + "." + methodName;
+    }
+
+    public void PrintLog(Segments segments) {
+        cfg.initConfLog();
+        ArrayList<Segments> segmentsArr = new ArrayList<Segments>();
+        EtiquetaLog log = new EtiquetaLog(cfg.getSetup(), cfg.getMeta(), segmentsArr);
+        segmentsArr.add(segments);
+        System.out.println("json => " + new Gson().toJson(log));
     }
 
     public Duration getDuration() {
@@ -65,6 +94,14 @@ public class Segments {
     }
 
     public String getLine_number() {
+//        String line_number = "";
+        try {
+            line_number = String.valueOf(Thread.currentThread().getStackTrace()[2].getLineNumber());
+        } catch (Exception e) {
+//            LOG_TIME.error(e.getMessage(), e);
+            System.out.println(e.getMessage());
+            return line_number;
+        }
         return line_number;
     }
 

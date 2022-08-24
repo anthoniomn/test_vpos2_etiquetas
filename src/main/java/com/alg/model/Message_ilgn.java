@@ -10,11 +10,7 @@ public class Message_ilgn {
     }
     private String value;
 
-    
-    public Message_ilgn(String locale, String value) {
-        this.locale = locale;
-        this.value = value;
-    }
+
     public Message_ilgn(String locale, String value) {
         this.locale = locale;
         this.value = value;
