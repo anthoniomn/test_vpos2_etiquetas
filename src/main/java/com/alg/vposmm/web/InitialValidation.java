@@ -15,7 +15,6 @@ public class InitialValidation {
     static long LogControlTimeStart;
 
     public static void validateData() {
-        Segments Segment = new Segments();
         //punto de control 2
         LogControlTimeStart = System.currentTimeMillis();
         try {
@@ -25,10 +24,10 @@ public class InitialValidation {
         }
         FlowControl.validateData();
         segments = new Segments("registered", "capture",
-            Segment.getClass_and_method(), LogControlTimeStart,
-            Segment.getLine_number(), null, LogControlTimeStart + "",
+            new Segments().getClass_and_method(), LogControlTimeStart,
+            new Segments().getLine_number(), null, LogControlTimeStart + "",
             "punto de control 2", "es_PE", "punto de control 2");
-        Segment.PrintLog(segments);
+        new Segments().PrintLog(segments);
     }
 
 }

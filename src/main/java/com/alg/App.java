@@ -24,7 +24,6 @@ public final class App {
     static long LogControlTimeStart;
 
     public static void main(String[] args) {
-        Segments Segment = new Segments();
         //punto de control 1
         LogControlTimeStart = System.currentTimeMillis();
         try {
@@ -34,9 +33,9 @@ public final class App {
         }
         InitialValidation.validateData();
         segments = new Segments("registered", "capture",
-            Segment.getClass_and_method(), LogControlTimeStart,
-            Segment.getLine_number(), null, LogControlTimeStart + "",
+            new Segments().getClass_and_method(), LogControlTimeStart,
+            new Segments().getLine_number(), null, LogControlTimeStart + "",
             "punto de control 1", "es_PE", "punto de control 1");
-        Segment.PrintLog(segments);
+        new Segments().PrintLog(segments);
     }
 }

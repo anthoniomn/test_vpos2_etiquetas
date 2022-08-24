@@ -7,7 +7,6 @@ public class FlowControl {
 
     static long LogControlTimeStart;
     public static void validateData() {
-        Segments Segment = new Segments();
         //punto de control 3
         LogControlTimeStart = System.currentTimeMillis();
         try {
@@ -16,9 +15,9 @@ public class FlowControl {
             throw new RuntimeException(e);
         }
         segments = new Segments("Incomplete", "Flow_control",
-            Segment.getClass_and_method(), LogControlTimeStart,
-            Segment.getLine_number(), null, LogControlTimeStart + "",
+            new Segments().getClass_and_method(), LogControlTimeStart,
+            new Segments().getLine_number(), null, LogControlTimeStart + "",
             "punto de control 3", "es_PE", "punto de control 3");
-        Segment.PrintLog(segments);
+        new Segments().PrintLog(segments);
     }
 }
