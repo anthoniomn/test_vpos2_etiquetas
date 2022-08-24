@@ -29,7 +29,7 @@ public final class App {
         cfg.initConfLog();
         ArrayList<Segments> segmentsArr = new ArrayList<Segments>();
         EtiquetaLog log = new EtiquetaLog(cfg.getSetup(), cfg.getMeta(), segmentsArr);
-
+        //add test git
         //for (int i = 0; i < data.getDataJson().size(); i++) {
         new Timer().schedule(new TimerTask() {
             @Override
