@@ -12,6 +12,7 @@ import com.alg.model.Message_ilgn;
 
 import com.alg.model.Segments;
 
+import com.alg.vposmm.web.InitialValidation;
 import com.google.gson.*;
 
 /**
@@ -31,11 +32,11 @@ public final class App {
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
+        InitialValidation.validateData();
         segments = new Segments("registered", "capture",
             Segment.getClass_and_method(), LogControlTimeStart,
-            Segment.getLine_number(), null,
-            LogControlTimeStart + "", "es_PE", "data.getDataJson().get(i).getValue()");
+            Segment.getLine_number(), null, LogControlTimeStart + "",
+            "punto de control 1", "es_PE", "punto de control 1");
         Segment.PrintLog(segments);
-
     }
 }
