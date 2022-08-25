@@ -12,32 +12,33 @@ public class Segments {
     private String state;
     private String step;
     private String class_and_method;
-    Duration durationObject;
     private String start;
     private String end;
     private String line_number;
     private String message;
+    private String number_sequence;
+    public Duration duration;
+    Duration durationObject;
     Message_ilgn message_ilgn = new Message_ilgn();
     Error errorObject;
-    private String number_sequence;
-    static Duration duration;
 
-    static Config cfg = new Config();
-    static Data data = new Data();
+
+    //private Config cfg = new Config();
 
     public Segments(String state, String step, String class_and_method, long start,
                     String line_number, Error errorObject, String Message,
                     String Message_ilgn_locale, String Message_ilgn_value) {
+        //cfg.initConfLog();                        
+        long endTime = System.currentTimeMillis();
+        long Milliseconds = endTime - start;
+        duration = new Duration();
+        duration.setMilliseconds(Milliseconds + "");
+        double Seconds = (double) Milliseconds / 1000;
+        //System.out.println(Seconds);
         this.state = state;
         this.step = step;
         this.class_and_method = class_and_method;
         this.start = start + "";
-        long endTime = System.currentTimeMillis();
-        duration = new Duration();
-        long Milliseconds = endTime - start;
-        duration.setMilliseconds(Milliseconds + "");
-        double Seconds = (double) Milliseconds / 1000;
-        System.out.println(Seconds);
         duration.setSeconds(Seconds + "");
         this.durationObject = duration;
         this.end = endTime + "";
@@ -78,13 +79,7 @@ public class Segments {
         return className + "." + methodName;
     }
 
-    public void PrintLog(Segments segments) {
-        cfg.initConfLog();
-        ArrayList<Segments> segmentsArr = new ArrayList<Segments>();
-        EtiquetaLog log = new EtiquetaLog(cfg.getSetup(), cfg.getMeta(), segmentsArr);
-        segmentsArr.add(segments);
-        System.out.println("json => " + new Gson().toJson(log));
-    }
+  
 
     public Duration getDuration() {
         return durationObject;

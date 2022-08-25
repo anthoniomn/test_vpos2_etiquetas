@@ -26,15 +26,14 @@ public class Config {
     }
 
     public Config() {
+        Configuration_object configurationObject = new Configuration_object("6f71eb61986f9f89f5dc64051788679fb41b9c4d",
+        "compression_algorithm", "compressed_configuration_object_md5_checksum",
+        "compressed_configuration_object_size_in_bytes");
+    setup = new Setup("REST", "144", "8737", "985696", "3500932", "INFO", configurationObject);
+    meta = new Meta("client_ip", "user_agent", System.currentTimeMillis() + "", "GMT-5", System.currentTimeMillis() + "",
+        "GMT-4");
     }
 
-    public void initConfLog() {
-        Configuration_object configurationObject = new Configuration_object("6f71eb61986f9f89f5dc64051788679fb41b9c4d",
-            "compression_algorithm", "compressed_configuration_object_md5_checksum",
-            "compressed_configuration_object_size_in_bytes");
-        setup = new Setup("REST", "144", "8737", "985696", "3500932", "INFO", configurationObject);
-        meta = new Meta("client_ip", "user_agent", System.currentTimeMillis() + "", "GMT-5", System.currentTimeMillis() + "",
-            "GMT-4");
-    }
+    
 
 }
