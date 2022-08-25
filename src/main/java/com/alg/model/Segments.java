@@ -26,7 +26,7 @@ public class Segments {
     static Data data = new Data();
 
     public Segments(String state, String step, String class_and_method, long start,
-                    String line_number, Error errorObject, String number_sequence, String Message,
+                    String line_number, Error errorObject, String Message,
                     String Message_ilgn_locale, String Message_ilgn_value) {
         this.state = state;
         this.step = step;
@@ -34,14 +34,17 @@ public class Segments {
         this.start = start + "";
         long endTime = System.currentTimeMillis();
         duration = new Duration();
-        duration.setMilliseconds(endTime - start + "");
-        duration.setSeconds("1");
+        long Milliseconds = endTime - start;
+        duration.setMilliseconds(Milliseconds + "");
+        double Seconds = (double) Milliseconds / 1000;
+        System.out.println(Seconds);
+        duration.setSeconds(Seconds + "");
         this.durationObject = duration;
         this.end = endTime + "";
         this.message = Message;
         this.line_number = line_number;
         this.errorObject = errorObject;
-        this.number_sequence = number_sequence;
+        this.number_sequence = start + "";
         this.message_ilgn = new Message_ilgn(Message_ilgn_locale, Message_ilgn_value);
 
     }

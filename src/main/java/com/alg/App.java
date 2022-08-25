@@ -32,10 +32,10 @@ public final class App {
             throw new RuntimeException(e);
         }
         InitialValidation.validateData();
-        segments = new Segments("registered", "capture",
+        segments = new Segments("incomplete", "capture",
             new Segments().getClass_and_method(), LogControlTimeStart,
-            new Segments().getLine_number(), null, LogControlTimeStart + "",
-            "punto de control 1", "es_PE", "punto de control 1");
+            new Segments().getLine_number(), null,
+            "Servicio de autorizacion", "es_PE", "Servicio de autorizacion");
         new Segments().PrintLog(segments);
     }
 }

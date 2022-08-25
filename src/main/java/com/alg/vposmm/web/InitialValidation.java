@@ -22,11 +22,11 @@ public class InitialValidation {
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
-        FlowControl.validateData();
-        segments = new Segments("registered", "capture",
+        FlowControl.switchProcessing();
+        segments = new Segments("incomplete", "business_rules",
             new Segments().getClass_and_method(), LogControlTimeStart,
-            new Segments().getLine_number(), null, LogControlTimeStart + "",
-            "punto de control 2", "es_PE", "punto de control 2");
+            new Segments().getLine_number(), null,
+            "inicia la creación de la orden", "es_PE", "inicia la creación de la orden");
         new Segments().PrintLog(segments);
     }
 

@@ -1,25 +1,25 @@
-package com.alg.vposmm.web;
+package com.alg.vposmm.rest.util;
 
 import com.alg.model.Segments;
-import com.alg.vposmm.rest.util.RestUtil;
+import com.alg.vposmm.web.FlowControl;
 
-public class FlowControl {
+public class RestUtil {
     static Segments segments;
 
     static long LogControlTimeStart;
-    public static void switchProcessing() {
-        //punto de control 3
+
+    public static void setTransactionWSRes() {
+        //punto de control 4
         LogControlTimeStart = System.currentTimeMillis();
         try {
-            Thread.sleep(2659);
+            Thread.sleep(1567);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
-        RestUtil.setTransactionWSRes();
-        segments = new Segments("incomplete", "flow_control",
+        segments = new Segments("authorized", "authorization",
             new Segments().getClass_and_method(), LogControlTimeStart,
             new Segments().getLine_number(), null,
-            "Validar si consume el servicio de RBA - Onboarding", "es_PE", "Validar si consume el servicio de RBA - Onboarding");
+            "uso de RBA para confirmación", "es_PE", "uso de RBA para confirmación");
         new Segments().PrintLog(segments);
     }
 }
