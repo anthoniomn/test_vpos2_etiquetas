@@ -9,8 +9,6 @@ import com.google.gson.Gson;
 
 public class RestUtil {
     static Segments segments;
-    //static EtiquetaLog log = new EtiquetaLog();
-    static EtiquetaLog logState = new EtiquetaLog();
     static ArrayList<Segments> listState;
     static long LogControlTimeStart;
 
@@ -27,6 +25,7 @@ public class RestUtil {
             new Segments().getClass_and_method(), LogControlTimeStart,
             new Segments().getLine_number(), null,
             "uso de RBA para confirmación", "es_PE", "uso de RBA para confirmación");
-        new Segments().PrintSegment(segments);
+        new Segments().PrintSegment(segments, list);
+
     }
 }

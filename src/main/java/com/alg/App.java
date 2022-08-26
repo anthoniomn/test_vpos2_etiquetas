@@ -33,9 +33,9 @@ public final class App {
         InitialValidation.validateData(arrComplete);
         segments = new Segments("incomplete", "capture", new Segments().getClass_and_method(), LogControlTimeStart,
             new Segments().getLine_number(), null, "Servicio de autorizacion", "es_PE", "Servicio de autorizacion");
-        new Segments().PrintSegment(segments);
+        new Segments().PrintSegment(segments, arrComplete);
         System.out.println("============================================================");
-        new Segments().PrintArraySegments(arrComplete, segments);
+        new Segments().PrintArraySegments(arrComplete);
 
     }
 }

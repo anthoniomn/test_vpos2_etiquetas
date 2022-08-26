@@ -14,7 +14,6 @@ import java.util.List;
 public class InitialValidation {
 
     static Segments segments;
-    static EtiquetaLog logState = new EtiquetaLog();
     static ArrayList<Segments> listState;
     static long LogControlTimeStart;
 
@@ -31,6 +30,6 @@ public class InitialValidation {
         segments = new Segments("incomplete", "business_rules",
         new Segments().getClass_and_method(), LogControlTimeStart, new Segments().getLine_number(), null,
         "inicia la creación de la orden", "es_PE", "inicia la creación de la orden");
-        new Segments().PrintSegment(segments);
+        new Segments().PrintSegment(segments, list);
     }
 }
