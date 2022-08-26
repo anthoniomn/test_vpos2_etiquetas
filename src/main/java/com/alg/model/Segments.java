@@ -5,6 +5,7 @@ import com.alg.config.Config;
 import com.alg.data.Data;
 import com.google.gson.Gson;
 
+import java.security.Principal;
 import java.util.ArrayList;
 
 public class Segments {
@@ -28,33 +29,43 @@ public class Segments {
     public Segments(String state, String step, String class_and_method, long start,
                     String line_number, Error errorObject, String Message,
                     String Message_ilgn_locale, String Message_ilgn_value) {
-        //cfg.initConfLog();                        
+        //cfg.initConfLog();
         long endTime = System.currentTimeMillis();
         long Milliseconds = endTime - start;
-        System.out.println("start "+ start);
-        //System.out.println("end "+endTime);
-        duration = new Duration();
-        duration.setMilliseconds(Milliseconds + "");
+        this.duration = new Duration();
+        this.duration.setMilliseconds(Milliseconds + "");
         double Seconds = (double) Milliseconds / 1000;
-        //System.out.println("secon unix"+Seconds);
-        //System.out.println(Seconds);
         this.state = state;
         this.step = step;
         this.class_and_method = class_and_method;
         this.start = start + "";
-        duration.setSeconds(Seconds + "");
-        this.durationObject = duration;
+        this.duration.setSeconds(Seconds + "");
         this.end = endTime + "";
         this.message = Message;
         this.line_number = line_number;
         this.errorObject = errorObject;
         this.number_sequence = start + "";
         this.message_ilgn = new Message_ilgn(Message_ilgn_locale, Message_ilgn_value);
-
     }
 
     public Segments() {
 
+    }
+
+    public void PrintSegment(Segments segments) {
+        EtiquetaLog logState = new EtiquetaLog();
+        ArrayList<Segments> arrState = new ArrayList<Segments>();
+        arrState.add(segments);
+        logState.lifeCycle = arrState;
+        System.out.println("Punto de control X => " + new Gson().toJson(logState));
+    }
+
+    public void PrintArraySegments(ArrayList<Segments> arrComplete, Segments segments) {
+//        ArrayList<Segments> arrComplete = new ArrayList<Segments>();
+        EtiquetaLog logGeneral = new EtiquetaLog();
+        arrComplete.add(segments);
+        logGeneral.lifeCycle = arrComplete;
+        System.out.println("json General => " + new Gson().toJson(logGeneral));
     }
 
     public Message_ilgn getMessage_ilgn() {
@@ -82,7 +93,6 @@ public class Segments {
         return className + "." + methodName;
     }
 
-  
 
     public Duration getDuration() {
         return durationObject;

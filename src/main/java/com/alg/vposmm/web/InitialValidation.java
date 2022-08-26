@@ -23,21 +23,14 @@ public class InitialValidation {
         listState = new ArrayList<Segments>();
         LogControlTimeStart = System.currentTimeMillis();
         try {
-            Thread.sleep(1567);
+            Thread.sleep(3000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
-        segments = new Segments("incomplete", "business_rules",
-        new Segments().getClass_and_method(), LogControlTimeStart,
-        new Segments().getLine_number(), null,
-        "inicia la creación de la orden", "es_PE", "inicia la creación de la orden");
         FlowControl.switchProcessing(list);
-        list.add(segments);
-        listState.add(segments);
-        logState.lifeCycle = listState;
-        System.out.println("Punto de control 2 => " + new Gson().toJson(logState));
-
-        
+        segments = new Segments("incomplete", "business_rules",
+        new Segments().getClass_and_method(), LogControlTimeStart, new Segments().getLine_number(), null,
+        "inicia la creación de la orden", "es_PE", "inicia la creación de la orden");
+        new Segments().PrintSegment(segments);
     }
-
 }

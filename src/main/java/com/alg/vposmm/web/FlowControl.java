@@ -10,7 +10,7 @@ import com.google.gson.Gson;
 public class FlowControl {
     static Segments segments;
     static EtiquetaLog logState = new EtiquetaLog();
-    static ArrayList<Segments> listUnit; 
+    static ArrayList<Segments> listUnit;
     static long LogControlTimeStart;
     public static void switchProcessing(ArrayList<Segments> list) {
         //punto de control 3
@@ -21,15 +21,11 @@ public class FlowControl {
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
+        RestUtil.setTransactionWSRes(list);
         segments = new Segments("incomplete", "flow_control",
         new Segments().getClass_and_method(), LogControlTimeStart,
         new Segments().getLine_number(), null,
         "Validar si consume el servicio de RBA - Onboarding", "es_PE", "Validar si consume el servicio de RBA - Onboarding");
-        RestUtil.setTransactionWSRes(list);
-        list.add(segments);
-        listUnit.add(segments);
-        logState.lifeCycle = listUnit;
-        System.out.println("Punto de control 3 => " + new Gson().toJson(logState));
-        
+        new Segments().PrintSegment(segments);
     }
 }

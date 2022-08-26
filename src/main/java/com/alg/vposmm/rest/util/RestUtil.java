@@ -11,7 +11,7 @@ public class RestUtil {
     static Segments segments;
     //static EtiquetaLog log = new EtiquetaLog();
     static EtiquetaLog logState = new EtiquetaLog();
-    static ArrayList<Segments> listState; 
+    static ArrayList<Segments> listState;
     static long LogControlTimeStart;
 
     public static void setTransactionWSRes(ArrayList<Segments> list) {
@@ -27,11 +27,6 @@ public class RestUtil {
             new Segments().getClass_and_method(), LogControlTimeStart,
             new Segments().getLine_number(), null,
             "uso de RBA para confirmación", "es_PE", "uso de RBA para confirmación");
-        list.add(segments);
-        listState.add(segments);
-        logState.lifeCycle = listState;
-        System.out.println("Punto de control 4 => " + new Gson().toJson(logState));
-        //log.lifeCycle = list;
-        
+        new Segments().PrintSegment(segments);
     }
 }

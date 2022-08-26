@@ -20,39 +20,22 @@ import com.google.gson.*;
  */
 public final class App {
     static Segments segments;
-    static EtiquetaLog logGeneral = new EtiquetaLog();
-    static EtiquetaLog logState = new EtiquetaLog();
-    static ArrayList<Segments> arrComplete;
-    static ArrayList<Segments> arrState;
     static long LogControlTimeStart;
 
     public static void main(String[] args) {
-        //punto de control 1
+        ArrayList<Segments> arrComplete = new ArrayList<Segments>();
         LogControlTimeStart = System.currentTimeMillis();
-        arrComplete = new ArrayList<Segments>();
-        arrState = new ArrayList<Segments>();
         try {
             Thread.sleep(1567);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
-        // codigo y +codigo
-        //va al configurador();
-        segments = new Segments("incomplete", "capture",
-        new Segments().getClass_and_method(), LogControlTimeStart,
-        new Segments().getLine_number(), null,
-        "Servicio de autorizacion", "es_PE", "Servicio de autorizacion");
-        System.out.println("arr"+arrComplete);
         InitialValidation.validateData(arrComplete);
-        
-        //segments.setEnd("0000");
-        arrComplete.add(segments);
-        arrState.add(segments);
-        logGeneral.lifeCycle = arrComplete;
-        logState.lifeCycle = arrState;
-        System.out.println("Punto de control 1 => " + new Gson().toJson(logState));
+        segments = new Segments("incomplete", "capture", new Segments().getClass_and_method(), LogControlTimeStart,
+            new Segments().getLine_number(), null, "Servicio de autorizacion", "es_PE", "Servicio de autorizacion");
+        new Segments().PrintSegment(segments);
         System.out.println("============================================================");
-        System.out.println("json General => " + new Gson().toJson(logGeneral));
-        
+        new Segments().PrintArraySegments(arrComplete, segments);
+
     }
 }
