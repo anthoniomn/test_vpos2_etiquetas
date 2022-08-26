@@ -14,13 +14,13 @@ import java.util.List;
 public class InitialValidation {
 
     static Segments segments;
-    //static EtiquetaLog log = new EtiquetaLog();
-    //static ArrayList<Segments> arrSegments;
+    static EtiquetaLog logUnit = new EtiquetaLog();
+    static ArrayList<Segments> listUnit;
     static long LogControlTimeStart;
 
     public static void validateData(ArrayList<Segments> list) {
         //punto de control 2
-        //list = new ArrayList<Segments>();
+        listUnit = new ArrayList<Segments>();
         LogControlTimeStart = System.currentTimeMillis();
         try {
             Thread.sleep(1567);
@@ -28,12 +28,16 @@ public class InitialValidation {
             throw new RuntimeException(e);
         }
         segments = new Segments("incomplete", "business_rules",
-            new Segments().getClass_and_method(), LogControlTimeStart,
-            new Segments().getLine_number(), null,
-            "inicia la creación de la orden", "es_PE", "inicia la creación de la orden");
-        list.add(segments);
+        new Segments().getClass_and_method(), LogControlTimeStart,
+        new Segments().getLine_number(), null,
+        "inicia la creación de la orden", "es_PE", "inicia la creación de la orden");
         FlowControl.switchProcessing(list);
-            
+        list.add(segments);
+        listUnit.add(segments);
+        logUnit.lifeCycle = listUnit;
+        System.out.println("Punto de control 2 => " + new Gson().toJson(logUnit));
+
+        
     }
 
 }

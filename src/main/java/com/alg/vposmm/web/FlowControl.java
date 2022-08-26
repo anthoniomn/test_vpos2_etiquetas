@@ -2,15 +2,19 @@ package com.alg.vposmm.web;
 
 import java.util.ArrayList;
 
+import com.alg.model.EtiquetaLog;
 import com.alg.model.Segments;
 import com.alg.vposmm.rest.util.RestUtil;
+import com.google.gson.Gson;
 
 public class FlowControl {
     static Segments segments;
-
+    static EtiquetaLog logUnit = new EtiquetaLog();
+    static ArrayList<Segments> listUnit; 
     static long LogControlTimeStart;
     public static void switchProcessing(ArrayList<Segments> list) {
         //punto de control 3
+        listUnit = new ArrayList<Segments>();
         LogControlTimeStart = System.currentTimeMillis();
         try {
             Thread.sleep(2659);
@@ -21,8 +25,11 @@ public class FlowControl {
         new Segments().getClass_and_method(), LogControlTimeStart,
         new Segments().getLine_number(), null,
         "Validar si consume el servicio de RBA - Onboarding", "es_PE", "Validar si consume el servicio de RBA - Onboarding");
-        list.add(segments);
         RestUtil.setTransactionWSRes(list);
+        list.add(segments);
+        listUnit.add(segments);
+        logUnit.lifeCycle = listUnit;
+        System.out.println("Punto de control 3 => " + new Gson().toJson(logUnit));
         
     }
 }

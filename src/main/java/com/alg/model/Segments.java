@@ -31,9 +31,12 @@ public class Segments {
         //cfg.initConfLog();                        
         long endTime = System.currentTimeMillis();
         long Milliseconds = endTime - start;
+        System.out.println("start "+ start);
+        //System.out.println("end "+endTime);
         duration = new Duration();
         duration.setMilliseconds(Milliseconds + "");
         double Seconds = (double) Milliseconds / 1000;
+        //System.out.println("secon unix"+Seconds);
         //System.out.println(Seconds);
         this.state = state;
         this.step = step;
