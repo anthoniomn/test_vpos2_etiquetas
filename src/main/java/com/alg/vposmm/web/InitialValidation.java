@@ -14,12 +14,10 @@ import java.util.List;
 public class InitialValidation {
 
     static Segments segments;
-    static ArrayList<Segments> listState;
     static long LogControlTimeStart;
 
     public static void validateData(ArrayList<Segments> list) {
         //punto de control 2
-        listState = new ArrayList<Segments>();
         LogControlTimeStart = System.currentTimeMillis();
         try {
             Thread.sleep(3000);
@@ -27,9 +25,8 @@ public class InitialValidation {
             throw new RuntimeException(e);
         }
         FlowControl.switchProcessing(list);
-        segments = new Segments("incomplete", "business_rules",
+        segments = new Segments(list,"incomplete", "business_rules",
         new Segments().getClass_and_method(), LogControlTimeStart, new Segments().getLine_number(), null,
         "inicia la creación de la orden", "es_PE", "inicia la creación de la orden");
-        new Segments().PrintSegment(segments, list);
     }
 }

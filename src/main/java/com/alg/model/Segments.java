@@ -26,7 +26,7 @@ public class Segments {
 
     //private Config cfg = new Config();
 
-    public Segments(String state, String step, String class_and_method, long start,
+    public Segments(ArrayList<Segments> arrComplete, String state, String step, String class_and_method, long start,
                     String line_number, Error errorObject, String Message,
                     String Message_ilgn_locale, String Message_ilgn_value) {
         //cfg.initConfLog();
@@ -46,6 +46,7 @@ public class Segments {
         this.errorObject = errorObject;
         this.number_sequence = start + "";
         this.message_ilgn = new Message_ilgn(Message_ilgn_locale, Message_ilgn_value);
+        PrintSegment(this, arrComplete);
     }
 
     public Segments() {
