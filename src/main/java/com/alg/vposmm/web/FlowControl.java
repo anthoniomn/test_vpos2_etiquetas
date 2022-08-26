@@ -9,7 +9,7 @@ import com.google.gson.Gson;
 
 public class FlowControl {
     static Segments segments;
-    static EtiquetaLog logUnit = new EtiquetaLog();
+    static EtiquetaLog logState = new EtiquetaLog();
     static ArrayList<Segments> listUnit; 
     static long LogControlTimeStart;
     public static void switchProcessing(ArrayList<Segments> list) {
@@ -28,8 +28,8 @@ public class FlowControl {
         RestUtil.setTransactionWSRes(list);
         list.add(segments);
         listUnit.add(segments);
-        logUnit.lifeCycle = listUnit;
-        System.out.println("Punto de control 3 => " + new Gson().toJson(logUnit));
+        logState.lifeCycle = listUnit;
+        System.out.println("Punto de control 3 => " + new Gson().toJson(logState));
         
     }
 }

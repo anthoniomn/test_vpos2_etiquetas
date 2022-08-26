@@ -10,13 +10,13 @@ import com.google.gson.Gson;
 public class RestUtil {
     static Segments segments;
     //static EtiquetaLog log = new EtiquetaLog();
-    static EtiquetaLog logUnit = new EtiquetaLog();
-    static ArrayList<Segments> listUnit; 
+    static EtiquetaLog logState = new EtiquetaLog();
+    static ArrayList<Segments> listState; 
     static long LogControlTimeStart;
 
     public static void setTransactionWSRes(ArrayList<Segments> list) {
         //punto de control 4
-        listUnit = new ArrayList<Segments>();
+        listState = new ArrayList<Segments>();
         LogControlTimeStart = System.currentTimeMillis();
         try {
             Thread.sleep(1567);
@@ -28,9 +28,9 @@ public class RestUtil {
             new Segments().getLine_number(), null,
             "uso de RBA para confirmación", "es_PE", "uso de RBA para confirmación");
         list.add(segments);
-        listUnit.add(segments);
-        logUnit.lifeCycle = listUnit;
-        System.out.println("Punto de control 4 => " + new Gson().toJson(logUnit));
+        listState.add(segments);
+        logState.lifeCycle = listState;
+        System.out.println("Punto de control 4 => " + new Gson().toJson(logState));
         //log.lifeCycle = list;
         
     }

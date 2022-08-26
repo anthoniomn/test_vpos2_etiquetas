@@ -21,16 +21,16 @@ import com.google.gson.*;
 public final class App {
     static Segments segments;
     static EtiquetaLog logGeneral = new EtiquetaLog();
-    static EtiquetaLog logUnit = new EtiquetaLog();
-    static ArrayList<Segments> arrSegments;
-    static ArrayList<Segments> arrSegment;
+    static EtiquetaLog logState = new EtiquetaLog();
+    static ArrayList<Segments> arrComplete;
+    static ArrayList<Segments> arrState;
     static long LogControlTimeStart;
 
     public static void main(String[] args) {
         //punto de control 1
         LogControlTimeStart = System.currentTimeMillis();
-        arrSegments = new ArrayList<Segments>();
-        arrSegment = new ArrayList<Segments>();
+        arrComplete = new ArrayList<Segments>();
+        arrState = new ArrayList<Segments>();
         try {
             Thread.sleep(1567);
         } catch (InterruptedException e) {
@@ -42,15 +42,15 @@ public final class App {
         new Segments().getClass_and_method(), LogControlTimeStart,
         new Segments().getLine_number(), null,
         "Servicio de autorizacion", "es_PE", "Servicio de autorizacion");
-        System.out.println("arr"+arrSegments);
-        InitialValidation.validateData(arrSegments);
+        System.out.println("arr"+arrComplete);
+        InitialValidation.validateData(arrComplete);
         
         //segments.setEnd("0000");
-        arrSegments.add(segments);
-        arrSegment.add(segments);
-        logGeneral.lifeCycle = arrSegments;
-        logUnit.lifeCycle = arrSegment;
-        System.out.println("Punto de control 1 => " + new Gson().toJson(logUnit));
+        arrComplete.add(segments);
+        arrState.add(segments);
+        logGeneral.lifeCycle = arrComplete;
+        logState.lifeCycle = arrState;
+        System.out.println("Punto de control 1 => " + new Gson().toJson(logState));
         System.out.println("============================================================");
         System.out.println("json General => " + new Gson().toJson(logGeneral));
         
