@@ -1,5 +1,6 @@
 package com.alg;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -11,7 +12,7 @@ import com.alg.model.EtiquetaLog;
 import com.alg.model.Message_ilgn;
 
 import com.alg.model.Segments;
-
+import com.alg.util.CryproGraph;
 import com.alg.vposmm.web.InitialValidation;
 import com.google.gson.*;
 
@@ -35,6 +36,6 @@ public final class App {
             new Segments().getLine_number(), null, "Servicio de autorizacion", "es_PE", "Servicio de autorizacion");
         System.out.println("============================================================");
         new Segments().PrintArraySegments(arrComplete);
-
+     
     }
 }

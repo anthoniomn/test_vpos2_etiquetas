@@ -2,7 +2,9 @@ package com.alg.config;
 
 import com.alg.model.Configuration_object;
 import com.alg.model.Meta;
+import com.alg.model.Segments;
 import com.alg.model.Setup;
+import com.alg.util.CryproGraph;
 
 public class Config {
 
@@ -25,10 +27,10 @@ public class Config {
         this.meta = meta;
     }
 
-    public Config() {
-        Configuration_object configurationObject = new Configuration_object("6f71eb61986f9f89f5dc64051788679fb41b9c4d",
-        "compression_algorithm", "compressed_configuration_object_md5_checksum",
-        "compressed_configuration_object_size_in_bytes");
+    public Config(Segments obj) {
+        Configuration_object configurationObject = new Configuration_object(CryproGraph.getStringMD5(obj),
+        "MD5", CryproGraph.getStringMD5(obj),
+        "128");
     setup = new Setup("REST", "144", "8737", "985696", "3500932", "INFO", configurationObject);
     meta = new Meta("client_ip", "user_agent", System.currentTimeMillis() + "", "GMT-5", System.currentTimeMillis() + "",
         "GMT-4");

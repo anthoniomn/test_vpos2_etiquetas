@@ -13,8 +13,8 @@ public class EtiquetaLog {
     
     
     
-    public EtiquetaLog() {
-        Config cfg = new Config();
+    public EtiquetaLog(Segments obj) {
+        Config cfg = new Config(obj);
         this.setup = cfg.getSetup();
         this.meta = cfg.getMeta();
     }

@@ -54,17 +54,17 @@ public class Segments {
     }
 
     public void PrintSegment(Segments segments, ArrayList<Segments> list) {
-        EtiquetaLog logState = new EtiquetaLog();
+        EtiquetaLog logState = new EtiquetaLog(this);
         ArrayList<Segments> arrState = new ArrayList<Segments>();
         arrState.add(segments);
         logState.lifeCycle = arrState;
         list.add(segments);
-        System.out.println("Punto de control X => " + new Gson().toJson(logState));
+        System.out.println("Punto de control en ["+segments.getState()+"/"+segments.getStep()+"] => " + new Gson().toJson(logState));
     }
 
     public void PrintArraySegments(ArrayList<Segments> arrComplete) {
 //        ArrayList<Segments> arrComplete = new ArrayList<Segments>();
-        EtiquetaLog logGeneral = new EtiquetaLog();
+        EtiquetaLog logGeneral = new EtiquetaLog(this);
         logGeneral.lifeCycle = arrComplete;
         System.out.println("json General => " + new Gson().toJson(logGeneral));
     }
